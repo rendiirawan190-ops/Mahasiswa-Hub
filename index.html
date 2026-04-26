@@ -74,6 +74,30 @@
         </div>
     </div>
 
+    <section id="page-home" class="hero">
+    </section>
+
+<section id="page-finance" class="hero" style="display:none; flex-direction: column; align-items: flex-start;">
+    <div class="hero-text">
+        <h1>Manajemen <span>Keuangan</span></h1>
+        <p>Pantau pengeluaran bulanan kamu di sini.</p>
+    </div>
+    
+    <div class="dashboard-preview" style="width: 100%; max-width: 600px;">
+        <div class="stat-grid">
+            <div class="stat-card">
+                <small>Sisa Saldo</small>
+                <h2 id="balance-display">Rp 0</h2>
+            </div>
+            <div class="stat-card">
+                <small>Pengeluaran Bulan Ini</small>
+                <h2 style="color: #ef4444;">Rp 0</h2>
+            </div>
+        </div>
+        <button class="btn-primary" style="margin-top:20px;" onclick="backToHome()">Kembali ke Beranda</button>
+    </div>
+</section>
+
     <script src="app.js"></script>
 </body>
 </html>
