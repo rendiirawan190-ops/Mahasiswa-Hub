@@ -74,3 +74,38 @@ function askAI() {
         }, 1500);
     }
 }
+
+
+// Tambahkan event listener untuk tombol Keuangan di Navbar
+document.getElementById('nav-keuangan').addEventListener('click', (e) => {
+    e.preventDefault();
+    handleFinanceAccess();
+});
+
+function handleFinanceAccess() {
+    const savedUser = JSON.parse(localStorage.getItem('mhs_user'));
+
+    if (!savedUser) {
+        // Jika belum login/daftar, arahkan ke login (buka modal)
+        alert("Silahkan daftar atau login terlebih dahulu!");
+        toggleModal('auth-modal');
+    } else {
+        // Jika sudah login, arahkan ke halaman keuangan
+        showFinancePage();
+    }
+}
+
+function showFinancePage() {
+    // Sembunyikan halaman Home, tampilkan halaman Keuangan
+    document.getElementById('page-home').style.display = 'none';
+    document.getElementById('page-finance').style.display = 'flex';
+    
+    // Opsional: Update data saldo jika ada
+    console.log("Menampilkan Dashboard Keuangan Mahasiswa...");
+}
+
+function backToHome() {
+    // Kembali ke tampilan utama
+    document.getElementById('page-home').style.display = 'flex';
+    document.getElementById('page-finance').style.display = 'none';
+}
