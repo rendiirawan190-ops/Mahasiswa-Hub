@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mahasiswa Hub</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .tab-btn { padding: 10px; cursor: pointer; border: none; background: #007bff; color: white; border-radius: 4px; }
+        .section { margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; }
+        input { padding: 8px; margin: 5px 0; width: 90%; }
+        .list-item { background: #e9ecef; padding: 10px; margin: 5px 0; border-left: 5px solid #007bff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎓 Mahasiswa Hub</h2>
+    <button class="tab-btn" onclick="show('schedule')">Schedule</button>
+    <button class="tab-btn" onclick="show('finance')">Finance</button>
+
+    <div id="schedule" class="section">
+        <h3>Class & Major Updates</h3>
+        <input type="text" id="majorName" placeholder="Major/Subject Name">
+        <input type="text" id="majorUpdate" placeholder="Daily Update (e.g., Chapter 5)">
+        <button onclick="addSchedule()">Add Update</button>
+        <div id="scheduleList"></div>
+    </div>
+
+    <div id="finance" class="section" style="display:none;">
+        <h3>Monthly Expense Tracker</h3>
+        <p>Budget: <strong>$500</strong></p>
+        <input type="number" id="amount" placeholder="Amount Spent">
+        <input type="text" id="expenseNote" placeholder="What for?">
+        <button onclick="addExpense()">Subtract Expense</button>
+        <div id="expenseList"></div>
+    </div>
+</div>
+
+<script>
+    function show(id) {
+        document.getElementById('schedule').style.display = id === 'schedule' ? 'block' : 'none';
+        document.getElementById('finance').style.display = id === 'finance' ? 'block' : 'none';
+    }
+
+    function addSchedule() {
+        let name = document.getElementById('majorName').value;
+        let update = document.getElementById('majorUpdate').value;
+        if(name && update) {
+            document.getElementById('scheduleList').innerHTML += `<div class="list-item"><strong>${name}:</strong> ${update}</div>`;
+        }
+    }
+
+    function addExpense() {
+        let amt = document.getElementById('amount').value;
+        let note = document.getElementById('expenseNote').value;
+        if(amt) {
+            document.getElementById('expenseList').innerHTML += `<div class="list-item">-$${amt} (${note})</div>`;
+        }
+    }
+</script>
+
+</body>
+</html>
